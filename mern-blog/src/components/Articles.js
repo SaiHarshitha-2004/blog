@@ -7,7 +7,7 @@ const Articles = ( {articles} ) => {
   return (
     <>
          {articles.map((article, index) => (
-          <div key={index} className='p-4 m-4 w-full md:w-1/2 lg:w-1/3 xl:w-1/4'>
+          <div key={index} className='p-4 m-4 border border-red-200 w-full md:w-1/2 lg:w-1/3 xl:w-1/4'>
             <div className='h-full overflow-hidden mb-5'>
               <Link to={`/article/${article.name}`}>
                 <img

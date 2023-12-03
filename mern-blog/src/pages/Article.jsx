@@ -19,9 +19,7 @@ const Article = () => {
       const res = await fetch(`/api/articles/${name}`);
       console.log("result from fetch",res)
       const body = await res.json();
-      // console.log("body",body)
       setArticleInfo(body)
-      // console.log("setArticleInfo:",articleInfo)
     };
     fetchData()
   },[name])

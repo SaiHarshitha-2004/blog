@@ -4,7 +4,16 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        mint: '#EBF3E8',
+        lavender: '#FCFBFB',
+      },
+      backgroundImage:{
+        'title-image':`url("./homeimages/background.jpg")`
+      }
+    },
   },
+  
   plugins: [],
 }
