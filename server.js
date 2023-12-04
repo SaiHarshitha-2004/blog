@@ -7,6 +7,8 @@ const app = express();
 
 app.use(express.static('public'));
 
+const upload = multer( {dest : 'mern-blog/src/uploads'} )
+
 app.use('/uploads', express.static('mern-blog/src/uploads'));
 
 app.use(express.json({ extended: false }));
@@ -22,7 +24,7 @@ app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 3001;
 
-
+  
 mongoose.connect( "mongodb://0.0.0.0:27017/mernBlog")
 .then(
     () => {console.log("mongodb connected")}
@@ -41,26 +43,20 @@ const PostSchema = new mongoose.Schema( {
     timestamps: true,
 }) 
 
-const collection = new mongoose.model('blogwebsite', PostSchema)
+const collection = new mongoose.model('blogwebsites', PostSchema)
 
 
-
-const renameFile = (originalName, path) => {
-    const parts = originalName.split('.');
-    const ext = parts[parts.length - 1];
-    const newPath = path + '.' + ext;
-    fs.renameSync(path, newPath);
-    return newPath;
-};
-
-app.post('/api/blogwebsite', async (req, res) => {
+app.post('/api/blogwebsites', upload.single('file[]') , async (req, res) => {
     try {
-        const { name , path } = req.file;
-        
-        console.log("Original file info:", req.file);
-        const newPath = renameFile(name, path);
         const { title, summary, content } = req.body;
 
+        // console.log("files" , req.file)
+        const { originalname , path} = req.file;
+        const parts = originalname.split('.')
+        const extension = parts[parts.length-1]
+        // console.log(extension);
+        const newPath = path+'.'+extension
+        fs.renameSync(path , newPath)
         const postDoc = await collection.create({
             title,
             summary,
@@ -77,7 +73,7 @@ app.post('/api/blogwebsite', async (req, res) => {
     }
 });
 
-app.get('/api/blogwebsite', async (req, res) => {
+app.get('/api/blogwebsites', async (req, res) => {
     try {
         const posts = await collection.find();
         res.status(200).json(posts);

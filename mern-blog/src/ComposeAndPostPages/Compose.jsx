@@ -32,13 +32,10 @@ const Compose = () => {
     formData.append("title", title);
     formData.append("summary", summary);
     formData.append("content", content);
-    formData.append("file", file);
-
-    // console.log("files is :" , file[0].name , file[0].type)
-
+    formData.append("file[]", file[0]);
 
     try {
-      const response = await fetch("http://localhost:3001/api/blogwebsite", {
+      const response = await fetch("http://localhost:3001/api/blogwebsites", {
         method: "POST",
         body: formData,
         credentials: "include",
@@ -63,8 +60,8 @@ const Compose = () => {
     <form onSubmit={CreateNewPost} encType="multipart/form-data" className='flex flex-col [&_input]:p-2 [&_input]:m-2 [&_input]:border'>
       <input type='title' placeholder={'title'} value={title} onChange={e => setTitle(e.target.value)}/>
       <input type="summary" placeholder={'Summary'}value={summary} onChange={e => setSummary(e.target.value)} />
-      <input type="file" name="file" 
-             onChange={ev => setFile(ev.target.files)} />      
+      <input type="file" name="file[]" 
+             onChange={ev => setFile(ev.target.files)} multiple/>      
       <ReactQuill value={content} onChange={newValue => setContent(newValue)} modules={modules}/>
       <div className='flex justify-center'>
          <button type="submit" className='mt-5 w-1/2 focus:bg-blue-500 focus:text-white bg-mint text-blue-700  p-2'>create post</button>
