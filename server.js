@@ -54,7 +54,6 @@ app.post('/api/blogwebsites', upload.single('file[]') , async (req, res) => {
         const { originalname , path} = req.file;
         const parts = originalname.split('.')
         const extension = parts[parts.length-1]
-        // console.log(extension);
         const newPath = path+'.'+extension
         fs.renameSync(path , newPath)
         const postDoc = await collection.create({
@@ -82,5 +81,18 @@ app.get('/api/blogwebsites', async (req, res) => {
         res.status(500).json({ message: "Error fetching posts", error });
     }
 });
+
+app.get(`/api/blogwebsites/:postId` , async(req,res) => {
+    const {postId} = req.params
+    try {
+        const objectId = new Object(postId)
+        const singlePost = await collection.findOne({_id : objectId})
+        res.status(200).json(singlePost)
+    }
+    catch(error){
+        console.error("Error fetching single posts", error);
+        res.status(500).json({ message: "Error fetching single posts", error });
+    }
+})
 
 app.listen(PORT, () => console.log(`Server is running at ${PORT}`));

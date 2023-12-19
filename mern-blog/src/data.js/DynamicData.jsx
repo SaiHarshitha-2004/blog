@@ -24,26 +24,27 @@ const DynamicData = () => {
   }, [api_key, cx, search]);
 
   return (
-    <div className='flex flex-col m-2'>
-      {items.map((it, index) => (
-        <div key={index} className='flex flex-col m-2'>
-           <div className='flex flex-col text-center lg:p-5 md:p-4 border border-blue-200'>
-            <div>
-                <p>{it.title}</p>
-                <p>docs link</p>
-                <div className='flex flex-col'>
-                    <Link to={it.link} className='cursor-pointer'>
-                        Visit {it.displayLink} here
-                    </Link>
-                    <Link to={it.formattedUrl} className='cursor-pointer'>
-                        Visit {it.formattedUrl} here
-                    </Link>
-                </div>
+    <div className='flex flex-col border border-hidden'>
+   <div className='flex flex-col'>
+   {items.map((it, index) => (
+      <div key={index} className='w-full flex flex-col m-2'>
+        <div className='flex flex-col lg:p-5 md:p-4'>
+          <div>
+            <p className='pb-2 text-xl font-semibold'>🛩️{it.title}</p>
+            <div className='flex flex-col hover:text-blue-500'>
+              {/* <Link to={it.link} className='cursor-pointer'>
+                Visit {it.displayLink} here
+              </Link> */}
+              <Link to={it.formattedUrl} className='cursor-pointer'>
+                Visit {it.formattedUrl} here
+              </Link>
             </div>
           </div>
         </div>
-      ))}
-    </div>
+      </div>
+    ))}
+   </div>
+  </div>
   );
 };
 

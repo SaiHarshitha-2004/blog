@@ -5,6 +5,7 @@ import { FaGreaterThan, FaLessThan} from 'react-icons/fa';
 import { TfiPencilAlt } from "react-icons/tfi";
 import DynamicData from '../data.js/DynamicData';
 import { useNavigate } from 'react-router-dom';
+import About from '../pages/about';
 
 const Tag = ({ search }) => {
   const navigate = useNavigate()
@@ -13,7 +14,7 @@ const Tag = ({ search }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`https://dev.to/api/articles?tag=${search}&page=${page}&per_page=20`);
+      const res = await fetch(`https://dev.to/api/articles?tag=${search}&page=${page}&per_page=30`);
       const data = await res.json();
       const filter = data.filter((art) => art.cover_image);
       setItems(filter);
@@ -36,33 +37,19 @@ const Tag = ({ search }) => {
   };
 
   return (
-    <div className='border border-blue-500'>
-      <div className='flex flex-row'>
-        <div className='flex-1/4 w-1/4 p-10'>
-          <div className='sticky top-0'>
-            <p>{search}..</p>
-            <div className='flex h-1/4 flex-col w-full p-2 border border-red-200'>
-              <div>
-                <button onClick={()=> OnClick()} className='p-2'> click here for 👇</button>
-                <div className='ml-3'>
-                  <p className='p-2'>docs</p>
-                  <p className='p-2'>coding practices</p>
-                  <p className='p-2'>Tutorial</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className='flex-1 overflow-auto lg:w-3/4 mr-5'>
-          <div className='flex flex-col h-full overflow-y-hidden'>
+     <>
+     <p className='text-center p-2 font-extrabold font-serif'>{search}</p>
+      <div className='flex flex-col'>
+      <div className='flex  w-full mx-auto flex-auto overflow-auto'>
+          <div className='flex flex-row justify-center w-full flex-wrap  h-full overflow-x-clip overflow-y-clip'>
             {items.map((it, index) => (
-              <div key={index} className='flex lg:w-3/4 m-5 p-4 hover:shadow-2xl border hover:border-gray-50'>
-                <div className='w-1/2 pr-4'>
-                  <img className='w-full' src={it.cover_image} alt={`Article ${index} cover`} />
-                </div>
-                <div className='w-3/4 flex flex-col'>
+              <div key={index} className='flex  w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 flex-col m-5 p-4 hover:shadow-2xl border hover:border-gray-50'>
+                <div>
+                  <img className='w-full object-fill' src={it.cover_image} alt={`Article ${index} cover`} />
+                </div> 
+                <div className='flex flex-col flex-wrap'>
                   <p className='text-center pt-1 '>{it.title}</p>
-                  <p>{it.description}</p>
+                  <p>{it.description.slice(0,30)}..</p>
                   <p>{it.readable_publish_date}</p>
                   <Likes id={it.id} initialCount={it.positive_reactions_count} />
                 </div>
@@ -70,8 +57,7 @@ const Tag = ({ search }) => {
             ))}
           </div>
         </div>
-      </div>
-      <div className='flex float-right p-3'>
+      <div className='flex justify-end p-3'>
         <button onClick={handlePrevPage} className='mr-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded'>
           <span> <FaLessThan /></span>
         </button>
@@ -80,7 +66,13 @@ const Tag = ({ search }) => {
           <span> <FaGreaterThan /></span>
         </button>
       </div>
-    </div>
+      <div>
+        <p className='text-xl p-2 m-2 '>references and links 🔗</p>
+        <DynamicData />
+      </div>
+      <About />
+      </div>
+    </>
   );
 };
 

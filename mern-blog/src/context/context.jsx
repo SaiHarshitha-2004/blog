@@ -14,9 +14,11 @@ export const MyContextProvider = ({ children }) => {
   const [latestActive, setLatestActive] = useState(true);
   const [showTag , setShowTag] = useState(false)
   const [search , setSearch] = useState('')
+  const [postId , setPostId] = useState('')
+  const [profile , setProfile] = useState(false)
   const contextValue  = {
     latestActive, setLatestActive , showTag , setShowTag
-    ,search,setSearch}
+    ,search,setSearch , postId , setPostId , profile , setProfile}
 
   return (
     <MyContext.Provider value={contextValue}>

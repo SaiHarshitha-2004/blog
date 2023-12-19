@@ -1,11 +1,13 @@
 import React from 'react'
 import { CgProfile } from "react-icons/cg";
 import { Link } from 'react-router-dom';
-import MyPost from '../ComposeAndPostPages/myPost';
+import { InitialState } from '../context/context';
 
 const profile = () => {
+  const {setProfile} = InitialState()
   return (
-    <div className="p-8 m-2">
+    <div onClick={() => setProfile(false)}>
+       <div className="p-8 m-2">
         <p className='text-blue-500 text-xl font-semibold tracking-wide'>Profile</p>
         <p className='border border-b-white m-2'></p>
     <div className='flex justify-center mb-6'>
@@ -39,6 +41,7 @@ const profile = () => {
       Feel free to reach out at saiharshithamandapalli@email.com 📩 
     </p>
   </div>
+    </div>
   )
 }
 

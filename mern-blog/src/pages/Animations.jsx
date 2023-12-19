@@ -4,8 +4,8 @@ import React from 'react'
 
 const Animations = () => {
   return (
-    <div className='h-3/4 z-0'style={{ width: '70%', height: '100%'}} >
-      <Lottie animationData={Animi} classname='z-0'style={{ width: '120%', height: '100%'}} />
+    <div className='h-3/4 'style={{width: '70%', height: '100%'}} >
+      <Lottie animationData={Animi} style={{width: '120%', height: '100%'}} />
     </div>
   )
 }

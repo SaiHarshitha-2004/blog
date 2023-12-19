@@ -7,6 +7,7 @@ import { BsLinkedin } from "react-icons/bs";
 import { FaTwitter } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import About from "./about";
 
 
 const App = () => {
@@ -85,9 +86,12 @@ const Home = () => {
             Stay ahead with real-time updates.</p>
            <p></p>
         </div>
-        <div className="w-1/2 z-0"><Animations style={{width:"30%" , height:"20%"}} /></div>
+        <div className="w-1/2 z-0"  style={{ zIndex:"-1"}}>
+          <Animations style={{width:"30%" , height:"20%"}} />
+          </div>
       </div>
       <Category />
+      <About />
     </div>
   );
 };

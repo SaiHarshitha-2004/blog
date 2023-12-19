@@ -3,6 +3,7 @@ import { useNavigate} from 'react-router-dom';
 import { GoSearch } from 'react-icons/go'
 import Tag from '../components/Tag';
 import { InitialState } from '../context/context';
+import About from './about';
 const ArticlesList = () => {
   const navigate = useNavigate()
  const [active, setActive] = useState('latest');
@@ -24,27 +25,31 @@ const ArticlesList = () => {
     }
   }
  return (
-    <div className=' relative sticky top-0 z-2'>
-        <div className='flex justify-between p-5'>
-        <div className='flex flex-row w-64 ml-5 cursor-pointer'>
-          <p className={`pr-10 pb-4 pl-3 mr-2 border-b ${active === 'latest' ? `border-blue-500` : `border-white`}`}>
-            <button onClick={ ()=> toggleTab()}>latest</button>
-          </p>
-        </div>
-        <div>
-          <p className="flex items-center">
-              <input
-                type="text"
-                placeholder="search by tag..."
-                className="px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:border-blue-500"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                onKeyDown={searchTag}
-              />
-              <span className="bg-blue-500 text-white px-4 py-2 rounded-r-md flex items-center">
-                <GoSearch className="text-lg" />
-              </span>
+  <div>
+    <div className='top-0 z-2'>
+        <div className='w-full flex justify-between p-5'>
+          <div className='w-1/2 flex flex-row  ml-5 cursor-pointer'>
+            <p className={`pr-10 pb-4 pl-3 mr-2 border-b ${active === 'latest' ? `border-blue-500` : `border-white`}`}>
+              <button onClick={ ()=> toggleTab()}>latest</button>
             </p>
+          </div>
+          <div className='w-1/2'>
+            <p className="float-right flex items-center">
+                <input
+                  type="text"
+                  placeholder="search by tag..."
+                  className="px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:border-blue-500"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  onKeyDown={searchTag}
+                />
+                <span className="bg-blue-500 text-white px-4 py-2 rounded-r-md flex items-center">
+                  <GoSearch className="text-lg" />
+                </span>
+              </p>
+          </div>
+        <div>
+         
         </div>
       </div>
       <div>
@@ -55,6 +60,7 @@ const ArticlesList = () => {
         )}
       </div>
     </div>
+  </div>
  );
 };
 
