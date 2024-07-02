@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+   background-color: #0F051D;
+}
+* {
+  scroll-behavior: smooth
+}
+#title{
+  font-family: "Prosto One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#captionTitle{
+  font-family: "Prosto One", sans-serif;
+  font-weight: 50;
+  font-style: normal;
+}
+
+#subTitle{
+  font-family: "Prosto One", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.like-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+.like-icon {
+  transition: color 0.3s ease, transform 0.3s ease;
+  width: 22px; 
+  height: 22px; 
+}
+
+.like-icon.liked {
+  color: rgb(0, 153, 255); 
+}
+
+.like-container.animating .like-icon {
+  animation: bubble-animation 0.3s ease;
+}
+
+@keyframes bubble-animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
