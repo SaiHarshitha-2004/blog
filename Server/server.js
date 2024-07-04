@@ -92,10 +92,6 @@ connect( `${uri}mernBlog`)
 app.get("/" , (req , res) => {
   res.json("hello") 
 })
-<<<<<<< HEAD
-
-=======
->>>>>>> a2faae035de39235d72f0d7e02a6299a03ea91eb
 
 
 
