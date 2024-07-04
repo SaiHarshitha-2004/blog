@@ -154,7 +154,7 @@ const SignUp = () => {
     setAnim(true);
     setIsSending(true);
     try {
-        const res = await axios.post("http://localhost:3001/api/signup", {
+        const res = await axios.post("https://mern-blog-api-one.vercel.app/api/signup", {
           name: inputs.name,
           email: inputs.email,
           password: inputs.password,

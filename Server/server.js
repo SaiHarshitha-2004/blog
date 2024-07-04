@@ -2,7 +2,7 @@ import express, { static as expressStatic , json } from 'express';
 import cors from 'cors';
 import router from "./routes/user-routes.js";
 import { connect} from 'mongoose';
-import {USERNAME , PASSWORD  } from "./config.js"
+import {USERNAME , PASSWORD , ENVPORT } from "./config.js"
 import dotenv from 'dotenv';
 import cookieParser from "cookie-parser" ;
 dotenv.config();
@@ -10,8 +10,8 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-  origin: 'http://localhost:5173',
-  methods: "GET,POST,PUT,DELETE",
+  origin: 'https://mern-blog-client-snowy.vercel.app',
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };
 
@@ -32,7 +32,7 @@ app.use(json({ extended: false }));
 
 
 
-const PORT = process.env.PORT || 3001;
+const PORT = ENVPORT || 3001;
 
 
 const uri =  `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.wevnywk.mongodb.net/`
@@ -88,6 +88,10 @@ connect( `${uri}mernBlog`)
 //       res.status(500).json({ message: "Error fetching Google search data", error: error.response ? error.response.data : error.message });
 //     }
 //   });
+
+app.get("/" , (req , res) => {
+  res.json("hello") 
+})
 
 
 
