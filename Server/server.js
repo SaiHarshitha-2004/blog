@@ -9,28 +9,23 @@ dotenv.config();
 
 const app = express();
 
-const corsOptions = {
-  origin: 'https://mern-blog-client-snowy.vercel.app',
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
-};
+// const corsOptions = {
+//   origin: 'https://mern-blog-client-snowy.vercel.app',
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   credentials: true,
+// };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json()); // Ensure this is correctly placed
 app.use('/api', router);
 app.use(express.static('public'));
 
 app.use(expressStatic('public'));
-
 app.use(json({ extended: false }));
 
 const PORT = ENVPORT || 3001;
-
-
 const uri =  `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.wevnywk.mongodb.net/`
-
-
   
 connect( `${uri}mernBlog`)
 .then(
@@ -39,11 +34,7 @@ connect( `${uri}mernBlog`)
 .catch( 
     (e) => console.error(e)
 )
-
 app.get("/" , (req , res) => {
   res.json("hello") 
 })
-
-
-
 app.listen(PORT, () => console.log(`Server is running at ${PORT}`));
