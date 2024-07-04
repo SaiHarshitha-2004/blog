@@ -33,11 +33,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
-<<<<<<< HEAD
     },
-=======
-  },
->>>>>>> a2faae035de39235d72f0d7e02a6299a03ea91eb
   "keywords": [],
   "author": "Sai Harshitha Mandapalli",
   "license": "ISC",
