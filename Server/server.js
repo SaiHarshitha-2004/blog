@@ -89,6 +89,10 @@ connect( `${uri}mernBlog`)
 //     }
 //   });
 
+app.get("/" , (req , res) => {
+  res.json("hello") 
+})
+
 
 
 app.listen(PORT, () => console.log(`Server is running at ${PORT}`));
