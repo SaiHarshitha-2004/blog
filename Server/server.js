@@ -9,13 +9,13 @@ dotenv.config();
 
 const app = express();
 
-const corsOptions = {
-  origin: 'http://localhost:5173',
-  methods: "GET,POST,PUT,DELETE",
-  credentials: true,
-};
+// const corsOptions = {
+//   origin: 'http://localhost:5173',
+//   methods: "GET,POST,PUT,DELETE",
+//   credentials: true,
+// };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json()); // Ensure this is correctly placed
 app.use('/api', router);
