@@ -154,7 +154,7 @@ const Login = () => {
     setIsSending(true);
 
           try {
-              const res = await axios.post("http://localhost:3001/api/login", {
+              const res = await axios.post("https://mern-blog-api-one.vercel.app/api/login", {
                 email: inputs.email,
                 password: inputs.password,
               });
