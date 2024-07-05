@@ -16,7 +16,7 @@ const SinglePost = () => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `https://mern-blog-api-one.vercel.app/api/blogwebsites/${postId}`
+          `https://mern-blog-api-cyan.vercel.app/api/blogwebsites/${postId}`
         );
         const data = await res.json();
         setPost(data);
