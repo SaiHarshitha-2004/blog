@@ -22,7 +22,7 @@ const ShowAllPosts = () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch('https://mern-blog-api-one.vercel.app/api/blogwebsites');
+          const response = await fetch('https://mern-blog-api-cyan.vercel.app/api/blogwebsites');
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
