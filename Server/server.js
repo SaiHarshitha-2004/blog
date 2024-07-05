@@ -9,15 +9,16 @@ dotenv.config();
 
 const app = express();
 
-// const corsOptions = {
-//   origin: 'https://mern-blog-client-snowy.vercel.app',
-//   methods: ["GET", "POST", "PUT", "DELETE"],
-//   credentials: true,
-// };
+const corsOptions = {
+  origin: 'https://mern-blog-frontend-gold-pi.vercel.app',
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
+
 app.use(cookieParser());
-app.use(express.json()); // Ensure this is correctly placed
+app.use(express.json()); 
 app.use('/api', router);
 app.use(express.static('public'));
 
