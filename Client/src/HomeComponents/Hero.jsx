@@ -24,9 +24,11 @@ const Hero = () => {
               <div id="captionTitle" className={`${Style.captionTitle} text-white text-center float-left flex flex-wrap`}>
                   Welcome to a world where curiosity knows no limits!
               </div>
-              <button className={`btn border-0 ${Style.button} text-center`}>
-                Explore
-              </button>
+              <Link to="/articlesList">
+                <button className={`btn border-0 ${Style.button} cursor-pointer text-center`}>
+                    Show more
+                </button>
+                </Link>
           </div>
 
 

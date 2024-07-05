@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-  origin: 'https://mern-blog-client-snowy.vercel.app',
+  origin: 'https://mern-blog-frontend-gold-pi.vercel.app',
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };

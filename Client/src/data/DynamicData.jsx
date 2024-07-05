@@ -14,7 +14,7 @@ const DynamicData = () => {
   useEffect(() => {
     const fetchGoogleData = async () => {
       try {
-        const res = await fetch(`/api/search?query=${search}`);
+        const res = await fetch(`https://mern-blog-api-cyan.vercel.app/api/search?query=${search}`);
         const data = await res.json();
         setItems(data.items);
         console.log(items);
