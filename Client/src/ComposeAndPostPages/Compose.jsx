@@ -47,6 +47,7 @@ const Compose = () => {
   const CreateNewPost = async (e) => {
     e.preventDefault();
     try {
+      // compose page updated
       const response = await axios.post("https://mern-blog-api-cyan.vercel.app/api/blogwebsites", {
         title: inputs.title,
         summary: inputs.summary,
