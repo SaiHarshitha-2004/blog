@@ -13,6 +13,7 @@ const AddComments = ({ id }) => {
 
     else{
       try {
+        // blog-api url added
         const res = await fetch('https://mern-blog-api-cyan.vercel.app/api/addcomments', {
           method: 'POST',
           body: JSON.stringify({ id: id, comment: comment }),
