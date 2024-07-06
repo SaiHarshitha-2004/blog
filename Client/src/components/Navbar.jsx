@@ -8,7 +8,7 @@ import { CiPower } from "react-icons/ci";
 
 const Navbar = () => {
   const { user, email , isLoggedIn ,  setIsLoggedIn } = InitialState();
-  const btnStyle = `hover:bg-gradient-to-r hover:from-[#2600fc] hover:to-[#ff00ea] rounded-md w-full p-4`;
+  const btnStyle = `hover:bg-gradient-to-r hover:from-[#2600fc] cursor-pointer hover:to-[#ff00ea] rounded-md w-full p-4`;
 
   const handleLinkClick = () => {
     document.getElementById("my-drawer-4").checked = false;
